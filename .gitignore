@@ -1,0 +1,8 @@
+.DS_Store
+artifacts/*
+!artifacts/kernel.config
+!artifacts/SHA256SUMS
+sources/*.tar.gz
+src/
+__pycache__/
+*.pyc

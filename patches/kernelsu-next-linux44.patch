@@ -1,0 +1,16 @@
+diff --git a/kernel/selinux/rules.c b/kernel/selinux/rules.c
+index bb1d01c1..a72e0c65 100644
+--- a/kernel/selinux/rules.c
++++ b/kernel/selinux/rules.c
+@@ -8,9 +8,10 @@
+ #include <linux/string.h>
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 12, 0)
+ #include <linux/sched/types.h>
++#else
++#include <linux/sched.h>
+ #endif
+ #include <linux/stop_machine.h>
+-#include <uapi/linux/sched/types.h>
+ 
+ #include "uapi/selinux.h"
+ #include "klog.h" // IWYU pragma: keep

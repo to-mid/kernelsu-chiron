@@ -1,0 +1,23 @@
+diff --git a/src/kernel/drivers/crypto/msm/qcedev.c b/src/kernel/drivers/crypto/msm/qcedev.c
+--- a/src/kernel/drivers/crypto/msm/qcedev.c
++++ b/src/kernel/drivers/crypto/msm/qcedev.c
+@@ -1748,6 +1748,7 @@ long qcedev_ioctl(struct file *file, unsigned cmd, unsigned long arg)
+ 			err = -EFAULT;
+ 			goto exit_free_qcedev_areq;
+ 		}
++		}
+ 		break;
+ 
+ 	case QCEDEV_IOCTL_SHA_FINAL_REQ:
+diff --git a/build-kernel.sh b/build-kernel.sh
+--- a/build-kernel.sh
++++ b/build-kernel.sh
+@@ -42,7 +42,7 @@ docker run --rm \
+ 
+         mkdir -p out
+         make O=out chiron_defconfig
+-        make O=out -j"$(nproc)"
++        make O=out -j"$(nproc)" KCFLAGS=-Wno-error
+ 
+         cp out/arch/arm64/boot/Image.gz-dtb /artifacts/
+         cp out/.config /artifacts/kernel.config
